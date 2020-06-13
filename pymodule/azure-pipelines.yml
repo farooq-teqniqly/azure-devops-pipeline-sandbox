@@ -2,14 +2,6 @@ trigger:
   branches:
     include:
       - '*'
-  tags:
-    include:
-      - '*'
-  paths:
-    include:
-      - 'pymodule/contoso/*'
-    exclude:
-      - '*'
 
 jobs:
   - template: ../jobs/archetype-tests.yml
