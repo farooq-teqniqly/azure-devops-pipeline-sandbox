@@ -6,7 +6,7 @@ parameters:
   VmImage: ubuntu-16.04
   TestMatrix:
     Python38:
-      Container: teqniqly/azure-pipeline-job-python:3.8.3-alpine
+      Container: matthewfeickert/docker-python3-ubuntu:3.8.3
 
 jobs:
   - job: ${{ parameters.JobName }}
