@@ -6,7 +6,7 @@ parameters:
   VmImage: ubuntu-16.04
   Matrix:
     Python38:
-      ContainerResource: teqniqly/azure-pipeline-job-python:3.8.3-alpine
+      Container: teqniqly/azure-pipeline-job-python:3.8.3-alpine
 
 jobs:
   - job: ${{ parameters.JobName }}
@@ -17,8 +17,8 @@ jobs:
     continueOnError: false
     pool:
       vmImage: ${{ parameters.VmImage }}  
-    container: ${{ parameters.ContainerResource}}
+    container: ${{ parameters.Container }}
     steps:
       - template: ../steps/build-test.yml
         parameters:
-          SourceDirectory: ${{ parameters.SourceDirectory}}
+          SourceDirectory: ${{ parameters.SourceDirectory }}
