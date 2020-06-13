@@ -13,6 +13,6 @@ trigger:
       - '*'
 
 stages:
-- template: ../../pipelines/archetype-test.yml
+- template: ../../pipelines/archetype-tests.yml
   parameters:
     SourceDirectory: ./

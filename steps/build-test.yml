@@ -1,6 +1,9 @@
 parameters:
-  RootDirectory: ''
+  SourceDirectory: ''
 
 steps:
   - bash: |
-      pip install -r  ${{ parameters.RootDirectory }}/requirements.txt
+      pip install pipenv
+  
+  - bash: |
+      pipenv update
