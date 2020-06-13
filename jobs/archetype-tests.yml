@@ -1,33 +1,26 @@
+resources:
+  containers:
+  - container: py35
+    image: teqniqly/azure-pipeline-job-python:3.5.9-alpine
+
+  - container: py36
+    image: teqniqly/azure-pipeline-job-python:3.6.10-alpine
+
+  - container: py37
+    image: teqniqly/azure-pipeline-job-python:3.7.7-alpine
+
+  - container: py38
+    image: teqniqly/azure-pipeline-job-python:3.8.3-alpine
+
 parameters:
   SourceDirectory: ''
   JobName: Test
   TestTimeoutInMinutes: 30
   MaxParallel: 4
+  VmImage: ubuntu-16.04
   Matrix:
-    Linux_Python35:
-      OSName: 'Linux'
-      OSVmImage: 'ubuntu-18.04'
-      PythonVersion: '3.5'
-      CoverageArg: ''
-      RunForPR: false
-    Linux_Python36:
-      OSName: 'Linux'
-      OSVmImage: 'ubuntu-18.04'
-      PythonVersion: '3.6'
-      CoverageArg: ''
-      RunForPR: false
-    Linux_Python37:
-      OSName: 'Linux'
-      OSVmImage: 'ubuntu-18.04'
-      PythonVersion: '3.7'
-      CoverageArg: ''
-      RunForPR: false
-    Linux_Python38:
-      OSName: 'Linux'
-      OSVmImage: 'ubuntu-18.04'
-      PythonVersion: '3.8'
-      CoverageArg: ''
-      RunForPR: true
+    Python38:
+      ContainerResource: py38
 
 jobs:
   - job: ${{ parameters.JobName }}
@@ -37,8 +30,8 @@ jobs:
       matrix: ${{ parameters.Matrix }}
     continueOnError: false
     pool:
-      vmImage: $(OSVmImage)
-
+      vmImage: ${{ parameters.VmImage }}  
+    container: ${{ parameters.ContainerResource}}
     steps:
       - template: ../steps/build-test.yml
         parameters:
