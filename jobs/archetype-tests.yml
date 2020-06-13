@@ -2,7 +2,7 @@ parameters:
   SourceDirectory: ''
   JobName: Test
   TestTimeoutInMinutes: 30
-  MaxParallel: 0
+  MaxParallel: 4
   Matrix:
     Linux_Python35:
       OSName: 'Linux'
