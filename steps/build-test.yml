@@ -3,7 +3,9 @@ parameters:
 
 steps:
   - bash: |
-      pip3 install --upgrade pip wheel setuptools tox pytest
+      pip3 install setuptools
+      pip3 install tox
+      pip3 install pytest
     displayName: 'Install standard packages'
   - bash: |
       tox
