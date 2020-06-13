@@ -22,7 +22,7 @@ jobs:
     continueOnError: false
     pool:
       vmImage: ${{ parameters.VmImage }}  
-    container: '$(Container)'
+    container: $[ variables['Container'] ]
     steps:
       - template: ../steps/build-test.yml
         parameters:
