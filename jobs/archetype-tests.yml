@@ -42,4 +42,4 @@ jobs:
     steps:
       - template: ../steps/build-test.yml
         parameters:
-          SourceDirectory: ''
+          SourceDirectory: ${{ parameters.SourceDirectory}}

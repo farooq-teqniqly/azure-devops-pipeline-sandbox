@@ -6,4 +6,4 @@ trigger:
 jobs:
   - template: ../jobs/archetype-tests.yml
     parameters:
-      SourceDirectory: ../src
+      SourceDirectory: pymodule

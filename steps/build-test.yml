@@ -8,3 +8,4 @@ steps:
   - bash: |
       python -m pytest
     displayName: 'Run tests'
+    workingDirectory: $(System.DefaultWorkingDirectory)/${{ parameters.SourceDirectory }}
