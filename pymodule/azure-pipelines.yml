@@ -8,11 +8,11 @@ trigger:
       - '*'
   paths:
     include:
-      - 'user-pipelines/*'
+      - 'pymodule/contoso/*'
     exclude:
       - '*'
 
-stages:
-- template: ../pipelines/archetype-test.yml
-  parameters:
-    SourceDirectory: ../src
+jobs:
+  - template: ../../jobs/archetype-tests.yml
+    parameters:
+      SourceDirectory: ../src
