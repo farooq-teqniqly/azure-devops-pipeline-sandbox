@@ -1,0 +1,25 @@
+parameters:
+  SourceDirectory: ''
+  JobName: Test
+  TestTimeoutInMinutes: 30
+  MaxParallel: 0
+  Matrix:
+    Linux_Python35:
+      OSName: 'Linux'
+      OSVmImage: 'ubuntu-18.04'
+      PythonVersion: '3.5'
+
+jobs:
+  - job: ${{ parameters.JobName }}
+    timeoutInMinutes: ${{ parameters.TestTimeoutInMinutes }}
+    strategy:
+      maxParallel: ${{ parameters.MaxParallel }}
+      matrix: ${{ parameters.Matrix }}
+    continueOnError: false
+    pool:
+      vmImage: $(OSVmImage)
+
+    steps:
+      - template: ../steps/build-test.yml
+        parameters:
+          SourceDirectory: ''

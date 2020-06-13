@@ -3,7 +3,7 @@ parameters:
 
 steps:
   - bash: |
-      pip install pipenv
+      pip install setuptools pipenv
   
   - bash: |
       pipenv update
