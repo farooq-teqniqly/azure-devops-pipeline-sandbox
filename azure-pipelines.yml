@@ -3,7 +3,7 @@ trigger:
 - master
 
 extends:
-  template: start.yml
+  template: secure-template.yml
   parameters:
     buildSteps:  
       - bash: echo Test #Passes
