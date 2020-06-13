@@ -6,6 +6,6 @@ steps:
       pip install -U pip setuptools tox pytest
     displayName: 'Install standard packages'
   - bash: |
-      python -m tox
+      python3 -m tox
     displayName: 'Run tests'
     workingDirectory: $(System.DefaultWorkingDirectory)/${{ parameters.SourceDirectory }}
