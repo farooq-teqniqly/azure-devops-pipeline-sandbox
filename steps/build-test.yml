@@ -6,6 +6,6 @@ steps:
       pip install --upgrade pip wheel setuptools tox pytest
     displayName: 'Install standard packages'
   - bash: |
-      python -m pytest
+      tox
     displayName: 'Run tests'
     workingDirectory: $(System.DefaultWorkingDirectory)/${{ parameters.SourceDirectory }}
