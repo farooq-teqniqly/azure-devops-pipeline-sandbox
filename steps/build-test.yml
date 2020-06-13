@@ -3,7 +3,7 @@ parameters:
 
 steps:
   - bash: |
-      pip3 install --upgrade tox pytest
+      pip3 install tox pytest
     displayName: 'Install standard packages'
   - bash: |
       python3 -m tox
