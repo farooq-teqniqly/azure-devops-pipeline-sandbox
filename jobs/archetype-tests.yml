@@ -13,7 +13,12 @@ jobs:
     timeoutInMinutes: ${{ parameters.TestTimeoutInMinutes }}
     strategy:
       maxParallel: ${{ parameters.MaxParallel }}
-      matrix: ${{ parameters.Matrix }}
+      
+      matrix:
+        ${{ each matrixEntry in parameters.TestMatrix }}:
+          ${{ matrixEntry.key }}:
+            ${{ insert }}: ${{ matrixEntry.value }}
+
     continueOnError: false
     pool:
       vmImage: ${{ parameters.VmImage }}  
