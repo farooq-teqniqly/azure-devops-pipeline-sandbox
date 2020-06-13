@@ -13,6 +13,6 @@ trigger:
       - '*'
 
 jobs:
-  - template: ../../jobs/archetype-tests.yml
+  - template: ../jobs/archetype-tests.yml
     parameters:
       SourceDirectory: ../src
