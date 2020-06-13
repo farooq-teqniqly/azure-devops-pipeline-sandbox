@@ -21,7 +21,7 @@ def main():
         license="MIT",
         long_description=long_description,
         long_description_content_type="text/markdown",
-        packages=setuptools.find_namespace_packages(exclude="tests"),
+        packages=["contoso"],
         include_package_data=True,
         keywords=[],
         install_requires=[],
