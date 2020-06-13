@@ -4,7 +4,10 @@ parameters:
 steps:
   - bash: |
       pip install --upgrade pip
+    displayName: 'Upgrade pip'
   - bash: |
       pip install wheel
+    displayName: 'Install wheel'
   - bash: |
       pip install setuptools
+    displayName: 'Install setuptools'
