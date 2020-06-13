@@ -3,6 +3,8 @@ parameters:
 
 steps:
   - bash: |
-      pip install --upgrade pip wheel setuptools tox
-    displayName: 'Install standard deployment packages'
-  
+      pip install --upgrade pip wheel setuptools tox pytest
+    displayName: 'Install standard packages'
+  - bash: |
+      python -m pytest
+    displayName: 'Run tests'
