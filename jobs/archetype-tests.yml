@@ -13,16 +13,11 @@ jobs:
     timeoutInMinutes: ${{ parameters.TestTimeoutInMinutes }}
     strategy:
       maxParallel: ${{ parameters.MaxParallel }}
-
-      matrix:
-        ${{ each matrixEntry in parameters.TestMatrix }}:
-          ${{ matrixEntry.key }}:
-            ${{ insert }}: ${{ matrixEntry.value }}
-
+      matrix: ${{ parameters.TestMatrix }}
     continueOnError: false
     pool:
       vmImage: ${{ parameters.VmImage }}  
-    container: $[ variables['Container'] ]
+    container: $[ variables['container'] ]
     steps:
       - template: ../steps/build-test.yml
         parameters:
