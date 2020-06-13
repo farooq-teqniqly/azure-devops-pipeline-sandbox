@@ -3,9 +3,9 @@ parameters:
 
 steps:
   - bash: |
-      pip install --upgrade wheel setuptools pip tox pytest
+      pip3 install --upgrade wheel setuptools pip tox pytest
     displayName: 'Install standard packages'
   - bash: |
-      python -m tox
+      python3 -m tox
     displayName: 'Run tests'
     workingDirectory: $(System.DefaultWorkingDirectory)/${{ parameters.SourceDirectory }}
