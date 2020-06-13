@@ -1,0 +1,18 @@
+trigger:
+  branches:
+    include:
+      - 'dev'
+      - 'feature/*'
+  tags:
+    include:
+      - '*'
+  paths:
+    include:
+      - 'user-pipelines/*'
+    exclude:
+      - '*'
+
+stages:
+- template: ../pipelines/archetype-test.yml
+  parameters:
+    SourceDirectory: ../src

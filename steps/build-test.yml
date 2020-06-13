@@ -1,0 +1,6 @@
+parameters:
+  RootDirectory: ''
+
+steps:
+  - bash: |
+      pip install -r  ${{ parameters.RootDirectory }}/requirements.txt
