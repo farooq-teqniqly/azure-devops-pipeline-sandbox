@@ -35,9 +35,9 @@ ENV LANG=C.UTF-8
 
 RUN pyenv install $PYTHON_VERSION
 RUN pyenv global $PYTHON_VERSION
-RUN pip install --upgrade pip && pyenv rehash
-RUN pip install tox pytest
-
-RUN rm -rf ~/.cache/pip
 
 CMD [ "python" ]
+
+RUN pip install --upgrade pip && pyenv rehash
+RUN pip install tox pytest
+RUN rm -rf ~/.cache/pip

@@ -3,13 +3,6 @@ parameters:
 
 steps:
   - bash: |
-      find ~ -name python
-    displayName: 'Show python paths'
-    workingDirectory: $(System.DefaultWorkingDirectory)
-  - bash: |
-      echo $PATH
-    displayName: 'Show $PATH'
-  - bash: |
-      python -m tox
+      tox
     displayName: 'Run tests'
     workingDirectory: $(System.DefaultWorkingDirectory)/${{ parameters.SourceDirectory }}
