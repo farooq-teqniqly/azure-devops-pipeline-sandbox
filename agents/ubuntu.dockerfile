@@ -6,38 +6,34 @@ SHELL [ "/bin/bash", "-c" ]
 
 RUN apt-get -qq -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq -y install \
-        make \
         build-essential \
-        libssl-dev \
         zlib1g-dev \
-        libbz2-dev \
-        libreadline-dev \
-        libsqlite3-dev \
-        wget \
-        curl \
-        llvm \
         libncurses5-dev \
-        libncursesw5-dev \
-        xz-utils \
-        tk-dev \
-        libffi-dev \ 
-        liblzma-dev \
-        git
+        libgdbm-dev \
+        libnss3-dev \
+        libssl-dev \
+        libsqlite3-dev \
+        libreadline-dev \
+        libffi-dev \
+        libbz2-dev \
+        make \
+        wget
 
 ARG PYTHON_VERSION='3.8.3'
-ARG PYENV_HOME=/root/.pyenv
-
-RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_HOME \
-    && rm -rfv $PYENV_HOME/.git
-
-ENV PATH $PYENV_HOME/shims:$PYENV_HOME/bin:$PATH
 ENV LANG=C.UTF-8
 
-RUN pyenv install $PYTHON_VERSION
-RUN pyenv global $PYTHON_VERSION
+RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
+RUN tar -xf Python-$PYTHON_VERSION.tgz
+WORKDIR /root/Python-$PYTHON_VERSION
+RUN ./configure --enable-optimizations
+RUN make
+RUN make altinstall
+RUN ln -s /usr/local/bin/python3.8 /usr/local/bin/python
+
+WORKDIR /root
 
 CMD [ "python" ]
 
-RUN pip install --upgrade pip && pyenv rehash
+RUN python -m pip install --upgrade pip
 RUN pip install tox pytest
-RUN rm -rf ~/.cache/pip
+
