@@ -4,45 +4,39 @@ WORKDIR /root
 
 SHELL [ "/bin/bash", "-c" ]
 
-ARG PYTHON_VERSION='3.8.3'
-
 RUN apt-get -qq -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq -y install \
-        gcc \
-        g++ \
-        zlibc \
-        zlib1g-dev \
+        make \
+        build-essential \
         libssl-dev \
+        zlib1g-dev \
         libbz2-dev \
-        libsqlite3-dev \
-        libncurses5-dev \
-        libgdbm-dev \
-        libgdbm-compat-dev \
-        liblzma-dev \
         libreadline-dev \
-        uuid-dev \
-        libffi-dev \
-        tk-dev \
+        libsqlite3-dev \
         wget \
         curl \
-        git \
-        make \
-        sudo \
-        bash-completion \
-        tree \
-        vim \
-        software-properties-common && \
-        mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && \
-        apt-get -y autoclean && \
-        apt-get -y autoremove && \
-        rm -rf /var/lib/apt-get/lists/*
+        llvm \
+        libncurses5-dev \
+        libncursesw5-dev \
+        xz-utils \
+        tk-dev \
+        libffi-dev \ 
+        liblzma-dev \
+        git
 
-COPY install_python.sh install_python.sh
+ARG PYTHON_VERSION='3.8.3'
+ARG PYENV_HOME=/root/.pyenv
 
-RUN bash install_python.sh ${PYTHON_VERSION} 1 && \
-    rm -r install_python.sh Python-${PYTHON_VERSION}
+RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_HOME \
+    && rm -rfv $PYENV_HOME/.git
 
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
+ENV PATH $PYENV_HOME/shims:$PYENV_HOME/bin:$PATH
+
+RUN pyenv install $PYTHON_VERSION
+RUN pyenv global $PYTHON_VERSION
+RUN pip install --upgrade pip && pyenv rehash
+RUN pip install tox pytest
+
+RUN rm -rf ~/.cache/pip
 
 CMD [ "/bin/bash" ]
