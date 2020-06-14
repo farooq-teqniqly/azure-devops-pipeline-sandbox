@@ -3,11 +3,12 @@ parameters:
 
 steps:
   - bash: |
-      find ~ -name python && echo $PATH
-    displayName: 'Echo $PATH'
+      find ~ -name tox
+    displayName: 'Show tox paths'
     workingDirectory: $(System.DefaultWorkingDirectory)
   - bash: |
       echo $PATH
+    displayName: 'Show $PATH'
   - bash: |
       tox
     displayName: 'Run tests'
