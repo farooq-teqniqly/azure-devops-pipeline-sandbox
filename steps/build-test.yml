@@ -3,8 +3,8 @@ parameters:
 
 steps:
   - bash: |
-      find ~ -name tox
-    displayName: 'Show tox paths'
+      find ~ -name python
+    displayName: 'Show python paths'
     workingDirectory: $(System.DefaultWorkingDirectory)
   - bash: |
       echo $PATH
