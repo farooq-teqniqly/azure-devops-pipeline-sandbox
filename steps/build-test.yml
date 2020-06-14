@@ -3,9 +3,6 @@ parameters:
 
 steps:
   - bash: |
-      python -m pip install tox pytest
-    displayName: 'Install standard packages'
-  - bash: |
-      python -m tox
+      tox
     displayName: 'Run tests'
     workingDirectory: $(System.DefaultWorkingDirectory)/${{ parameters.SourceDirectory }}
