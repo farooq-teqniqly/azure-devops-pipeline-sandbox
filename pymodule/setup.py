@@ -9,7 +9,9 @@ def main():
     dir_name = os.path.dirname(abspath)
     os.chdir(dir_name)
 
-    with open("README.md", "r") as f:
+    print("DIR NAME: {}".format(dir_name))
+
+    with open(os.path.join(dir_name, "README.md"), "r") as f:
         long_description = f.read()
 
     setuptools.setup(
