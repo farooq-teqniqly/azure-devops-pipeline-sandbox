@@ -10,6 +10,6 @@ steps:
       echo $PATH
     displayName: 'Show $PATH'
   - bash: |
-      tox
+      python -m tox
     displayName: 'Run tests'
     workingDirectory: $(System.DefaultWorkingDirectory)/${{ parameters.SourceDirectory }}
