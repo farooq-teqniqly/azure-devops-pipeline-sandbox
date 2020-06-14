@@ -1,0 +1,8 @@
+parameters:
+  SourceDirectory: ''
+
+steps:
+  - bash: |
+      tox
+    displayName: 'Run tests'
+    workingDirectory: $(System.DefaultWorkingDirectory)/${{ parameters.SourceDirectory }}

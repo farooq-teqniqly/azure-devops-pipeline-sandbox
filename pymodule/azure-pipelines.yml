@@ -1,0 +1,9 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+jobs:
+  - template: ../jobs/archetype-tests.yml
+    parameters:
+      SourceDirectory: pymodule
