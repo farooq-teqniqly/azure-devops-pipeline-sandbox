@@ -4,7 +4,7 @@ parameters:
 steps:
   - bash: |
       find ~ -name python && echo $PATH
-    displayName: 'Echo PATH'
+    displayName: 'Echo $PATH'
     workingDirectory: $(System.DefaultWorkingDirectory)
   - bash: |
       tox
