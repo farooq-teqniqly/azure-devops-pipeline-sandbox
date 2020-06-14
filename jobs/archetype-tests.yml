@@ -9,10 +9,10 @@ parameters:
       Container: teqniqly/azure-pipeline-job-python:3.8.3-ubuntu
     Python37:
       Container: teqniqly/azure-pipeline-job-python:3.7.7-ubuntu
-    Python36:
-      Container: teqniqly/azure-pipeline-job-python:3.6.10-ubuntu
-    Python35:
-      Container: teqniqly/azure-pipeline-job-python:3.5.9-ubuntu
+    #Python36:
+    #  Container: teqniqly/azure-pipeline-job-python:3.6.10-ubuntu
+    #Python35:
+    #  Container: teqniqly/azure-pipeline-job-python:3.5.9-ubuntu
 
 jobs:
   - job: ${{ parameters.JobName }}
